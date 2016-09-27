@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>MBTA</title>
+    <meta name="MBTA Departure" content="MBTA">
+    <meta name="Vladimir Fernandes" content="MBTA">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"
+            charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+</head>
+
+<body>
+    <script src="js/script.js"></script>
+    <header>
+        <div class="main-heading">
+            <h2>MBTA</h2>
+        </div>
+        <div class="description-container">
+            <h3>North & South Station Train Information</h3>
+
+            <p class="posted">Posted on
+                <time datetime="2016-10-04T16:31:24+02:00">September 19th 2016</time>
+        </div>
+        </div>
+    </header>
+    <section>
+        <div class="main-container">
+            <div id="main-content"></div>
+            <script id="template" type="text/x-handlebars-template">
+                <table class="table-departure">
+                    <thead>
+                    {{#each headerRows}}
+                    <td>{{this}}</td>
+                    {{/each}}
+                    </thead>
+                    {{#each dataRows}}
+                    <tr>
+                        <td>{{this.TimeStamp}}</td>
+                        <td>{{this.Origin}}</td>
+                        <td>{{this.Trip}}</td>
+                        <td>{{this.Destination}}</td>
+                        <td>{{this.ScheduledTime}}</td>
+                        <td>{{this.Lateness}}</td>
+                        <td>
+                            {{# if this.Track}}
+                            {{this.Track}}
+                            {{else}}
+                            TBD
+                            {{/if}}
+                        </td>
+                        <td class="normal">{{this.Status}}</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </script>
+        </div>
+    </section>
+    <footer>
+        <p>Copyright 2016 Vladimir Fernandes</p>
+    </footer>
+</body>
+</html>
